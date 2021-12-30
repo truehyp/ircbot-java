@@ -18,6 +18,9 @@ public class CitySearchServiceTest {
 		cd = cs.getCityId("beij");
 		assertEquals("北京", cd.getName());
 		assertEquals("101010100", cd.getId());
+		cd = cs.getCityId("yubali");
+		assertEquals(null, cd.getName());
+		assertEquals(null, cd.getId());
 	}
 
 }

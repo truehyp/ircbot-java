@@ -14,12 +14,7 @@ public class WeatherForecastTest {
 	public void getWealth3d() {
 		//assertEquals("https://devapi.qweather.com/v7/weather", w.url);
 		assertNotNull(w.getWealth("101010100", 0));
-		System.out.println(w.getWealth("101010100",3)
-				.getJSONArray("daily")
-				.getJSONObject(0)
-				.getString("fxDate")
-				//.getJSONArray("0")
-				//.toString()
+		System.out.println(w.getWealth("101010100",3).toString()
 				);
 	}
 
