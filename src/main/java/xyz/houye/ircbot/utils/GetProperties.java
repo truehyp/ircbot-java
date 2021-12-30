@@ -21,7 +21,8 @@ public class GetProperties {
 	}
 	public GetProperties(String path) {
 		try {
-			props.load((InputStream) new BufferedInputStream(new FileInputStream(new File(path))));
+			//props.load((InputStream) new BufferedInputStream(new FileInputStream(new File(path))));
+			props.load((InputStream) getClass().getClassLoader().getResourceAsStream(path));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,23 +41,24 @@ public class GetProperties {
 		
 	}
 	public Map<String, String> getContent() {
-		try {
-			props.load((InputStream) new BufferedInputStream(new FileInputStream(new File("src/main/resources/config/app.properties"))));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//printAllproperty(props);
-		@SuppressWarnings("rawtypes")
-		Enumeration en = props.propertyNames();
-		while (en.hasMoreElements()) {
-			String key = (String) en.nextElement();
-			String value = props.getProperty(key);
-			propmap.put(key,value);
-		}
+//		try {
+//			//props.load((InputStream) new BufferedInputStream(new FileInputStream(new File("src/main/resources/config/app.properties"))));
+//			props.load((InputStream) getClass().getClassLoader().getResourceAsStream("config/app.properties"));
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		//printAllproperty(props);
+//		@SuppressWarnings("rawtypes")
+//		Enumeration en = props.propertyNames();
+//		while (en.hasMoreElements()) {
+//			String key = (String) en.nextElement();
+//			String value = props.getProperty(key);
+//			propmap.put(key,value);
+//		}
 		return propmap;
 	}
 	

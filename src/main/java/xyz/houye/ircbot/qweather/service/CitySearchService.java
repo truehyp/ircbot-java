@@ -19,7 +19,7 @@ public class CitySearchService {
 	String key = null;
 	
 	public CitySearchService() {
-		this.props = new GetProperties("src/main/resources/config/app.properties");
+		this.props = new GetProperties("config/app.properties");
 		this.url = props.getValue("geoapi_url");
 		this.key = props.getValue("key");
 	}

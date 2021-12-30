@@ -16,7 +16,8 @@ public class GetpropertiesTest {
 
 	@Test
 	public void testgetcontent() {
-		GetProperties props = new GetProperties("src/main/resources/config/app.properties");
+		//GetProperties props = new GetProperties("src/main/resources/config/app.properties");
+		GetProperties props = new GetProperties("config/app.properties");
 		Map<String,String> m = new HashMap<>();
 		m = props.getContent();
 		String s = props.getValue("qweather_url");

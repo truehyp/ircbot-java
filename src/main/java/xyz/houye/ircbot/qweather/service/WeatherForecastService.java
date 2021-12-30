@@ -18,7 +18,7 @@ public class WeatherForecastService {
 	String key = null;
 	
 	public WeatherForecastService() {
-		this.props = new GetProperties("src/main/resources/config/app.properties");
+		this.props = new GetProperties("config/app.properties");
 		this.url = props.getValue("qweather_url");
 		this.key = props.getValue("key");
 		
