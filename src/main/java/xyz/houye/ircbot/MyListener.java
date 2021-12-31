@@ -10,6 +10,7 @@ import xyz.houye.ircbot.qweather.dto.CityDto;
 import xyz.houye.ircbot.qweather.dto.WeatherDto;
 import xyz.houye.ircbot.qweather.service.CitySearchService;
 import xyz.houye.ircbot.qweather.service.WeatherForecastService;
+import xyz.houye.ircbot.title.service.UrlTitle;
 
 public class MyListener extends ListenerAdapter {
         @Override
@@ -17,9 +18,7 @@ public class MyListener extends ListenerAdapter {
                 //When someone says ?helloworld respond with "Hello World"
         		if (event.getMessage().startsWith("'help")){
         			event.respond("'weather cityname --> search weather");
-        		}
-        				
-                if (event.getMessage().startsWith("'weather")) {
+        		}else if (event.getMessage().startsWith("'weather")) {
                 	String location = event.getMessage().substring("'weather".length()).trim();
 
                 	if (!location.isEmpty()) {
@@ -37,14 +36,21 @@ public class MyListener extends ListenerAdapter {
                 		}
 
                 	}
-                }
+                }else if (event.getMessage().contains("https")) {
+                	//TODO 用空格分割消息，匹配网址，获取标题
+                	UrlTitle ut = new UrlTitle();
+                	String reps = ut.GetTitle(event.getMessage());
+                	if (reps != null)
+                		event.respond(reps);
+					
+				}
         }
 
         public static void main(String[] args) throws Exception {
 
                 //Configure what we want our bot to do
                 Configuration configuration = new Configuration.Builder()
-                                .setName("PircBotXUser") //Set the nick of the bot. CHANGE IN YOUR CODE
+                                .setName("PircBotXUser2") //Set the nick of the bot. CHANGE IN YOUR CODE
                                 .addServer("irc.libera.chat") //Join the freenode network
                                 .addAutoJoinChannel("#cjlu") //Join the official #pircbotx channel
                                 .addListener(new MyListener()) //Add our listener that will be called on Events
