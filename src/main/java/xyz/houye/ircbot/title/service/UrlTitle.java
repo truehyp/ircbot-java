@@ -8,8 +8,9 @@ import xyz.houye.ircbot.utils.httpClient;
 
 public class UrlTitle {
 	
-	public String GetTitle(String url) {
+	public UrlDto GetTitle(String url) {
 		Pattern p = Pattern.compile("<title>(.*)</title>");
+		String title;
 		Matcher m; 
 		UrlDto ud = new UrlDto();
 
@@ -18,7 +19,10 @@ public class UrlTitle {
 		String resp = httpClient.httpGet(url, 5000);
 		m=p.matcher(resp);
 		if (m.find()) {
-			return m.group().replace("<title>", "").replace("</title>", "").trim();
+			title =  m.group().replace("<title>", "").replace("</title>", "").trim();
+			if ( !title.isEmpty())
+				ud.setTitle(title);
+			return ud;
 		}
 
 		return null;

@@ -10,6 +10,7 @@ import xyz.houye.ircbot.qweather.dto.CityDto;
 import xyz.houye.ircbot.qweather.dto.WeatherDto;
 import xyz.houye.ircbot.qweather.service.CitySearchService;
 import xyz.houye.ircbot.qweather.service.WeatherForecastService;
+import xyz.houye.ircbot.title.dto.UrlDto;
 import xyz.houye.ircbot.title.service.UrlTitle;
 
 public class MyListener extends ListenerAdapter {
@@ -39,9 +40,9 @@ public class MyListener extends ListenerAdapter {
                 }else if (event.getMessage().contains("https")) {
                 	//TODO 用空格分割消息，匹配网址，获取标题
                 	UrlTitle ut = new UrlTitle();
-                	String reps = ut.GetTitle(event.getMessage());
-                	if (reps != null)
-                		event.respond(reps);
+                	UrlDto ud = ut.GetTitle(event.getMessage());
+                	if (ud.getTitle() != null && !ud.getTitle().isEmpty())
+                		event.respond(ud.getTitle());
 					
 				}
         }
