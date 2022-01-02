@@ -28,14 +28,26 @@ jobs:
               "url": "https://maven.aliyun.com/repository/public"
             }
           ]
+        profiles: >
+          [
+            {
+              "id": "jitpack",
+              "name": "jitpack",
+              "url": "https://jitpack.io"
+            }
+          ]
         # json array of repositories to add to settings.xml
         repositories: >
           [
             {
-              "id": "gitpack.io",
+              "id": "jitpack.io",
               "name": "jitpack.io",
               "url": "https://jitpack.io"
             }
+          ]
+        active_profiles: >
+          [
+            "jitpack"
           ]
         output_file: .m2/settings.xml
 
