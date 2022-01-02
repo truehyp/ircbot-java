@@ -52,10 +52,10 @@ jobs:
               "url": "https://jitpack.io"
             }
           ]
-        active_profiles: >
-          [
-            "jitpack"
-          ]
+        #active_profiles: >
+         # [
+          #  "jitpack"
+          #]
         #output_file: /home/runner/work/ircbot-java/ircbot-java/.m2/settings.xml
 
     - name: Build with Maven
