@@ -49,7 +49,7 @@ jobs:
           [
             "jitpack"
           ]
-        output_file: foo/custom.xml
+        #output_file: foo/custom.xml
 
     
     - uses: actions/checkout@v2
