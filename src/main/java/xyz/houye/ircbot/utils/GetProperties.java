@@ -1,8 +1,5 @@
 package xyz.houye.ircbot.utils;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class GetProperties {
+	private final Logger logger = LoggerFactory.getLogger(GetProperties.class);
 
 	Properties props = new Properties();
 	Map<String, String> propmap = new HashMap<>();
@@ -36,7 +37,13 @@ public class GetProperties {
 		while (en.hasMoreElements()) {
 			String key = (String) en.nextElement();
 			String value = props.getProperty(key);
-			propmap.put(key,value);
+			if(!value.isEmpty())
+				propmap.put(key,value);
+		}
+		//key不放在配置文件中，这里加载环境变量中的key
+		if (System.getenv("key") != null) {
+			String value = System.getenv("key").toLowerCase();
+			propmap.put("key", value);
 		}
 		
 	}
@@ -59,11 +66,12 @@ public class GetProperties {
 //			String value = props.getProperty(key);
 //			propmap.put(key,value);
 //		}
+		
 		return propmap;
 	}
 	
 	public String getValue(String key) {
-		return (String) props.get(key);
+		return (String) propmap.get(key);
 	}
 	
 	private void printAllproperty(Properties props) {
