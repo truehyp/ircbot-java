@@ -20,7 +20,7 @@ public class UrlTitleTest {
 	public void TestBlog() {
 		UrlDto ud  = ut.GetTitle("https://houye.xyz");
 		assertNotNull(ud.getTitle());
-		//System.out.println(title);
+		System.out.println(ud.getTitle());
 	}
 	
 	@Test
@@ -28,6 +28,13 @@ public class UrlTitleTest {
 		UrlDto ud  = ut.GetTitle("https://blog.csdn.net/m0_37843672/article/details/88656694");
 		assertNotNull(ud.getTitle());
 		System.out.println(ud.getTitle());
+	}
+	@Test
+	public void TestBaidu() {
+		UrlDto ud  = ut.GetTitle("https://baidu.com");
+		assertNotNull(ud.getTitle());
+		System.out.println(ud.getTitle());
+		
 	}
 
 

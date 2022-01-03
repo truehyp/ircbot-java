@@ -22,6 +22,7 @@ public class UrlTitle {
 		ud.setUrl(url);
 
 		String resp = httpClient.httpGet(url, 5000);
+		//logger.info("resp: "+resp);
 		m=p.matcher(resp);
 		if (m.find()) {
 			title =  m.group().replace("<title>", "").replace("</title>", "").trim();
