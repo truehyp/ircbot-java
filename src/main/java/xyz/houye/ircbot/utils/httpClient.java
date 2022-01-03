@@ -34,7 +34,7 @@ public class httpClient {
 			CloseableHttpResponse response = httpclient.execute(getmethod);
 			HttpEntity entity = response.getEntity();
 			if (entity != null){
-				return EntityUtils.toString(entity);
+				return EntityUtils.toString(entity,"utf-8");
 			
 			}
 		} catch (ClientProtocolException e) {
