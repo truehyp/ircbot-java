@@ -41,6 +41,7 @@ public class MyListener extends ListenerAdapter {
 
 			}
 		} else if (event.getMessage().contains("http")) {
+			// 用空格分割消息，匹配网址，获取标题
 			logger.info("in http");
 			String urlString = GetUrl.getUrlString(event.getMessage());
 			if (urlString != null && urlString.length() != 0) {
@@ -50,7 +51,6 @@ public class MyListener extends ListenerAdapter {
 					event.respond(ud.getTitle());
 
 			}
-			// TODO 用空格分割消息，匹配网址，获取标题
 
 		}
 	}
@@ -58,6 +58,7 @@ public class MyListener extends ListenerAdapter {
 	public static void main(String[] args) throws Exception {
 
 		// Configure what we want our bot to do
+		// TODO aaa 后续把这些移到配置文件里
 		Configuration configuration = new Configuration.Builder().setName("PircBotXUser2") // Set the nick of the bot.
 																							// CHANGE IN YOUR CODE
 				.addServer("irc.libera.chat") // Join the freenode network
