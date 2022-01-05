@@ -12,7 +12,7 @@ import xyz.houye.ircbot.qweather.dto.WeatherDto;
 import xyz.houye.ircbot.qweather.service.CitySearchService;
 import xyz.houye.ircbot.qweather.service.WeatherForecastService;
 import xyz.houye.ircbot.title.dto.UrlDto;
-import xyz.houye.ircbot.title.service.UrlTitle;
+import xyz.houye.ircbot.title.service.UrlTitleService;
 import xyz.houye.ircbot.utils.GetUrl;
 
 public class MyListener extends ListenerAdapter {
@@ -45,7 +45,7 @@ public class MyListener extends ListenerAdapter {
 			logger.info("in http");
 			String urlString = GetUrl.getUrlString(event.getMessage());
 			if (urlString != null && urlString.length() != 0) {
-				UrlTitle ut = new UrlTitle();
+				UrlTitleService ut = new UrlTitleService();
 				UrlDto ud = ut.GetTitle(urlString);
 				if (ud.getTitle() != null && !ud.getTitle().isEmpty())
 					event.respond(ud.getTitle());

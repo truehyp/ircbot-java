@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import xyz.houye.ircbot.title.dto.UrlDto;
 import xyz.houye.ircbot.utils.httpClient;
 
-public class UrlTitle {
-	private final Logger logger = LoggerFactory.getLogger(UrlTitle.class);
+public class UrlTitleService {
+	private final Logger logger = LoggerFactory.getLogger(UrlTitleService.class);
 	
 	public UrlDto GetTitle(String url) {
 		logger.info("in GetTitle url"+url);

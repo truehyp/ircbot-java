@@ -5,11 +5,11 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 import xyz.houye.ircbot.title.dto.UrlDto;
-import xyz.houye.ircbot.title.service.UrlTitle;
+import xyz.houye.ircbot.title.service.UrlTitleService;
 
 public class UrlTitleTest {
 
-	UrlTitle ut = new UrlTitle();
+	UrlTitleService ut = new UrlTitleService();
 
 	@Test
 	public void TestNull() {
